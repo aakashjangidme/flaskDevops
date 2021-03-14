@@ -1,0 +1,23 @@
+version: '3'
+services: 
+  api:
+    container_name: flaskDevops-python
+    restart: always
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    command: gunicorn -b :5000 "run:app"
+    volumes: 
+      - api_data:/app
+
+  reverse_proxy:
+    container_name: flaskDevops-nginx
+    restart: always
+    build: ./nginx
+    ports: 
+      - '80:80'
+    depends_on: 
+      - api
+
+volumes: 
+  api_data:
