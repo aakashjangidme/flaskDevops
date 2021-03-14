@@ -13,32 +13,34 @@
             "mountPoints": [
                 {
                     "containerPath": "/app",
-                    "sourceVolume": "Api_Data"
+                    "sourceVolume": "api_data"
                 }
             ],
-            "memory": 120,
+            "memory": 128,
             "name": "api"
         },
         {
-            "essential": true,
-            "image": "aakashjangidme/flask_devops_nginx",
             "name": "reverse_proxy",
+            "essential": true,
+            "memory": 128,
+            "image": "aakashjangidme/flask_devops_nginx",
             "portMappings": [
                 {
                     "containerPort": 80,
                     "hostPort": 80
                 }
             ],
-            "memory": 120
+            "links": [
+                "api"
+            ]
         }
     ],
-    "family": "",
     "volumes": [
         {
+            "name": "api-data",
             "host": {
                 "sourcePath": "api_data"
-            },
-            "name": "Api_Data"
+            }
         }
     ]
 }
