@@ -30,4 +30,4 @@ deploy:
   on:
     main
   access-key-id : $ACCESS_KEY
-  secret-access-key: $AWS_SECRET_KEY
+  secret-access-key: $SECRET_KEY
