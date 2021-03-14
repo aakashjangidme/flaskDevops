@@ -1,0 +1,44 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "command": [
+                "gunicorn",
+                "-b",
+                ":5000",
+                "run:app"
+            ],
+            "essential": false,
+            "image": "aakashjangidme/flask_devops_python",
+            "mountPoints": [
+                {
+                    "containerPath": "/app",
+                    "sourceVolume": "Api_Data"
+                }
+            ],
+            "memory": 500,
+            "name": "api"
+        },
+        {
+            "essential": true,
+            "image": "aakashjangidme/flask_devops_nginx",
+            "name": "reverse_proxy",
+            "portMappings": [
+                {
+                    "containerPort": 80,
+                    "hostPort": 80
+                }
+            ],
+            "memory": 500
+        }
+    ],
+    "family": "",
+    "volumes": [
+        {
+            "host": {
+                "sourcePath": "api_data"
+            },
+            "name": "Api_Data"
+        }
+    ]
+}

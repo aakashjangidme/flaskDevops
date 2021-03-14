@@ -14,8 +14,20 @@ sudo: required
 script:
   - docker-compose up -d
   - docker-compose ps
-  - docker run -it aakashjangidme/flask_devops_python python -m unittest tests/test.py
+  - docker run -it $DOCKER_ID/flask_devops_python python -m unittest tests/test.py
 
 after_success:
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker-compose push
+
+deploy:
+  provider: elasticbeanstalk
+  region: ap-south-1
+  app: flask-devops
+  env: Flaskdevops-env
+  bucket_name: elasticbeanstalk-ap-south-1-863644218407
+  bucket_path: flask-devops
+  on:
+    main
+  access_key_id : $ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
