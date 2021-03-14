@@ -1,7 +1,5 @@
 FROM python:alpine
 # MAINTAINER Aakash ajangid25@gmail.com
-LABEL version="0.1"
-
 WORKDIR /app
 
 COPY . /app

@@ -16,7 +16,7 @@
                     "sourceVolume": "Api_Data"
                 }
             ],
-            "memory": 500,
+            "memory": 120,
             "name": "api"
         },
         {
@@ -29,7 +29,7 @@
                     "hostPort": 80
                 }
             ],
-            "memory": 500
+            "memory": 120
         }
     ],
     "family": "",
