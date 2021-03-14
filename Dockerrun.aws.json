@@ -13,7 +13,7 @@
             "mountPoints": [
                 {
                     "containerPath": "/app",
-                    "sourceVolume": "api_data"
+                    "sourceVolume": "Api_data"
                 }
             ],
             "memory": 128,
@@ -37,7 +37,7 @@
     ],
     "volumes": [
         {
-            "name": "api-data",
+            "name": "Api_data",
             "host": {
                 "sourcePath": "api_data"
             }
