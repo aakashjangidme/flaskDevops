@@ -3,7 +3,7 @@ version: '3'
 services: 
   api:
     container_name: flaskDevops-python
-    image: aakashjangimde/flaskDevopsPython
+    image: aakashjangimde/flask_devops_python
     restart: always
     build: 
       context: .
@@ -13,7 +13,7 @@ services:
       - api_data:/app
 
   reverse_proxy:
-    image: aakashjangimde/flaskDevopsNginx
+    image: aakashjangimde/flask_devops_nginx
     container_name: flaskDevops-nginx
     restart: always
     build: ./nginx
